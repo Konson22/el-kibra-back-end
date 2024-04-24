@@ -12,7 +12,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use(cors({ origin: ['http://localhost:3000'], credentials: true }));
+app.use(cors({ origin: ['http://localhost:3000', 'https://el-kibira.onrender.com'], credentials: true }));
 
 app.use(express.static('images'));
 
