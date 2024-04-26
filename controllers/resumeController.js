@@ -102,8 +102,9 @@ const sql = `INSERT INTO resumeTable(
     comments
     ) VALUES(?,?,?,?,?,?,?,?)
 `
+
 // db.run(sql, [
-//         1, 
+//         2, 
 //         JSON.stringify(about), 
 //         JSON.stringify(contacts), 
 //         JSON.stringify(skills),
@@ -118,7 +119,7 @@ const sql = `INSERT INTO resumeTable(
 // })
 
 
-
+// db.run('update resumeTable set userID=3 WHERE id=2')
 // GET ALL RESUMIES
 const getAllResume = (req, res) => {
     try {
@@ -146,10 +147,14 @@ const getSingleResume = (req, res) => {
     try {
         db.get(`SELECT * FROM resumeTable WHERE userID='${req.body.id}'`, [], (err, rows) => {
             if (err) throw err;
-            res.json(rows)
+            if(rows){
+                res.json({resume:rows})
+            }else{
+                res.status(404).json({message:'not fund'})
+            }
         })
-
     } catch (error) {
+        res.json({message:'Server side error'})
         console.log(error)
     }
 }
