@@ -13,16 +13,21 @@ const db = new sqlite.Database("./database.db", sqlite.OPEN_READWRITE, err => er
 // )`;
 
 
-const sql = `CREATE TABLE resumeTable(
+const sql = `CREATE TABLE freelancersTable(
     id INTEGER PRIMARY KEY, 
     userID INTEGER,
-    about TEXT,
-    contacts TEXT,
+    name TEXT NOT NULL,
+    profession TEXT NOT NULL,
+    gender TEXT NOT NULL,
+    state TEXT NOT NULL,
+    address TEXT NOT NULL,
+    phone TEXT NOT NULL,
+    email TEXT NOT NULL,
+    bio TEXT NOT NULL,
+    avatar TEXT NOT NULL,
     skills TEXT,
-    education TEXT,
-    experience TEXT,
-    projects TEXT,
-    comments TEXT
+    socialmedia TEXT,
+    reviews TEXT
 )`;
 
 
