@@ -1,4 +1,3 @@
-const { createToken } = require('../midlewares/jwt');
 const sqlite = require('sqlite3').verbose();
 
 const db = new sqlite.Database("./database.db", sqlite.OPEN_READWRITE, err => err && console.log(err));
@@ -22,6 +21,7 @@ const createResume = (req, res) => {
         socialmedia,
         reviews
     } = req.body
+    
     const sql = `INSERT INTO freelancersTable(
         userID, 
         name, 
@@ -54,9 +54,23 @@ const createResume = (req, res) => {
                 JSON.stringify(skills),
                 JSON.stringify(socialmedia),
                 JSON.stringify(reviews)
-            ], (err) => {
+            ], function(err) {
                 if(err) throw err
-                res.json({message:'Inserted Successfully!'})
+                res.json({
+                    userID:this.lastID,
+                    name,
+                    profession,
+                    gender,
+                    state,
+                    address,
+                    phone,
+                    email,
+                    bio,
+                    avatar,
+                    skills:JSON.stringify(skills),
+                    socialmedia:JSON.stringify(socialmedia),
+                    reviews:JSON.stringify(reviews)
+                })
             })
     } catch (error) {
         console.log(error)

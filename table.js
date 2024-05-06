@@ -26,7 +26,10 @@ const sql = `CREATE TABLE freelancersTable(
     bio TEXT NOT NULL,
     avatar TEXT NOT NULL,
     skills TEXT,
-    socialmedia TEXT,
+    linkedin TEXT,
+    facebook TEXT,
+    twitter TEXT,
+    instagram TEXT,
     reviews TEXT
 )`;
 
